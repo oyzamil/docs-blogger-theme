@@ -4,19 +4,9 @@ import blogger from "blogger-plugin/vite";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
-import * as packageJson from "./package.json";
-
-const REPOSITORY = "oyzamil/docs-blogger-theme";
-const DEV_BRANCH = "static-dev";
-
-export default defineConfig(({ mode }) => {
-	const APP_BASE =
-		mode === "development"
-			? `https://cdn.jsdelivr.net/gh/${REPOSITORY}@${DEV_BRANCH}/${packageJson.name}/dist/`
-			: `https://cdn.jsdelivr.net/gh/${REPOSITORY}@${packageJson.name}@${packageJson.version}/dist/`;
-
+export default defineConfig(() => {
 	return {
-		base: APP_BASE,
+		base: `https://cdn.jsdelivr.net/gh/oyzamil/docs-blogger-theme/dist/`,
 
 		plugins: [
 			react(),
