@@ -306,7 +306,7 @@
     <!--blogger-plugin:head:begin--><!--blogger-plugin:head:end-->
 
     <b:else/>
-    <b:comment><!--blogger-plugin:head:begin--></b:comment><script type='module' crossorigin='anonymous' src='https://cdn.jsdelivr.net/gh/oyzamil/docs-blogger-theme@docs-blogger-theme@0.0.1/dist/assets/template-B60M8THI.js'></script><link rel='stylesheet' crossorigin='anonymous' href='https://cdn.jsdelivr.net/gh/oyzamil/docs-blogger-theme@docs-blogger-theme@0.0.1/dist/assets/template-DCgmfSnW.css'/><b:comment><!--blogger-plugin:head:end--></b:comment>
+    <b:comment><!--blogger-plugin:head:begin--></b:comment><script type='module' crossorigin='anonymous' src='https://cdn.jsdelivr.net/gh/oyzamil/docs-blogger-theme/dist/assets/template-BrDeYCof.js'></script><link rel='stylesheet' crossorigin='anonymous' href='https://cdn.jsdelivr.net/gh/oyzamil/docs-blogger-theme/dist/assets/template-g6uBOCvZ.css'/><b:comment><!--blogger-plugin:head:end--></b:comment>
   </b:if>
 
   <b:comment><!--[ </head> ]--></b:comment>
