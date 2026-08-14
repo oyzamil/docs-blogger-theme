@@ -25,7 +25,7 @@
 	}
 }
 
-@layer components {
+@layer utility {
 	.prose {
 		@apply text-foreground text-base leading-7 fix-margin;
 		@apply [&>link[rel="stylesheet"]+*]:mt-0! [&>link[rel="stylesheet"]+*>*]:mt-0!;
