@@ -15,7 +15,8 @@
 		"check:types": "tsc --noEmit -p tsconfig.app.json",
 		"dev": "tsdown && vite",
 		"build": "tsdown && tsc -b && vite build",
-		"preview": "vite preview"
+		"preview": "vite preview",
+		"git": "bun run ./scripts/git-helper.ts add-git"
 	},
 	"dependencies": {
 		"@deox/dom-to-react": "^0.0.5",
