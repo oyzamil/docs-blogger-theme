@@ -1,4 +1,4 @@
-import { BloggerImage } from "blogger-images";
+import { resizeImage } from "blogr-plugins";
 import { HashIcon } from "lucide-react";
 import { Link } from "react-router";
 
@@ -123,13 +123,8 @@ function BlogAuthorCard({ author }: { author: BlogAuthor }) {
 }
 
 function resizeAvatarImage(source: string, size: number) {
-	return new BloggerImage(source, { existing: false, passThrough: true })
-		.size(size)
-		.alternateCrop(true)
-		.disableAnimation(true)
-		.noButton(true)
-		.noUpscaling(true)
-		.webp(true)
-		.cacheDays(90)
-		.url();
+	return resizeImage(source, {
+		height: size,
+		width: size,
+	});
 }

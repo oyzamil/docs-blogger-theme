@@ -18,6 +18,7 @@
         "@vitejs/plugin-react": "^5.0.0",
         "blogger-images": "^0.0.3",
         "blogger-plugin": "^0.0.14",
+        "blogr-plugins": "^0.0.1",
         "class-variance-authority": "^0.7.1",
         "date-fns": "^4.4.0",
         "firebase": "^12.17.1",
@@ -746,6 +747,8 @@
     "blogger-images": ["blogger-images@0.0.3", "", {}, "sha512-AGhk427G+JtoEMB91+0SfCdp8MXEtVxs2k7xNugCkstXsLTjsOmc7JOjPI1JX3ySFhmsMYWklHDgOPloGDuGag=="],
 
     "blogger-plugin": ["blogger-plugin@0.0.14", "", { "dependencies": { "minify-xml": "^4.5.2", "tailwindcss-iso": "^1.0.7" }, "peerDependencies": { "vite": "^7.0.0 || ^8.0.0" } }, "sha512-YOSmtcMiqbOgSQoouN8tW4DajJyKSMmVAdWDHt+IXmZl3SxZYdTPdWMhJ76ZcL1mTv9gge2YmZSFf/H+8wbwgg=="],
+
+    "blogr-plugins": ["blogr-plugins@0.0.1", "", {}, "sha512-F+8xNmfr7IpMBxbHC2GpJdXVewMiXCcJo8kdVmRXUhRd6xQwte4d4zMILSX/N/y9TkIhbLnGQNR9QbjemecRjw=="],
 
     "body-parser": ["body-parser@2.3.0", "", { "dependencies": { "bytes": "^3.1.2", "content-type": "^2.0.0", "debug": "^4.4.3", "http-errors": "^2.0.1", "iconv-lite": "^0.7.2", "on-finished": "^2.4.1", "qs": "^6.15.2", "raw-body": "^3.0.2", "type-is": "^2.1.0" } }, "sha512-2cGmJupaNgg+QUwVLAucDuWuoMZ6EX9iHDRswZ5lsNYEmwPaRknMPCLZz07yTzVq/83p4o/wzbDZbBrTvGGTIw=="],
 

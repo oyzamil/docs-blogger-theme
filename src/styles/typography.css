@@ -41,7 +41,7 @@
 		}
 
 		:where(h1):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-			@apply mt-8 mb-6 text-4xl;
+			@apply mt-8 mb-6 text-4xl font-heading font-black;
 		}
 
 		:where(h2):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
@@ -88,7 +88,7 @@
 		}
 
 		:where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-			@apply bg-muted/50 text-foreground relative rounded-sm px-[0.3rem] py-[0.2rem] text-sm font-medium wrap-break-word;
+			@apply bg-theme/10 text-foreground relative rounded-sm px-[0.3rem] py-0.5 text-sm font-medium wrap-break-word;
 		}
 
 		:where(blockquote):not(
@@ -102,31 +102,47 @@
 		}
 
 		:where(table):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-			@apply mx-auto my-6 block max-w-fit overflow-x-auto text-sm;
+			@apply my-6 w-full table max-w-full overflow-hidden rounded-lg border border-spacing-0 border-separate text-sm;
 		}
 
 		:where(thead):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-			@apply border-muted-foreground/30 border-b;
+			@apply border-muted-foreground/30;
 		}
 
 		:where(th):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-			@apply px-4 py-2 font-medium;
+			@apply border-b border-r bg-theme/10 px-3 py-2.5 text-theme font-mono last:border-r-0;
 			@apply text-left [[align=center]]:text-center [[align=right]]:text-right;
-		}
-
-		:where(tr):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-			@apply border-muted-foreground/30 border-y first:border-t-0 last:border-b-0;
 		}
 
 		:where(td):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-			@apply text-foreground/80 small fix-margin px-4 py-2 align-top wrap-break-word;
+			@apply text-foreground/80 small fix-margin border-r border-b px-4 py-2 align-top wrap-break-word last:border-r-0;
 			@apply text-left [[align=center]]:text-center [[align=right]]:text-right;
+		}
+
+		:where(tbody tr:last-child td):not(
+			:where([class~="not-prose"], [class~="not-prose"] *)
+		) {
+			@apply border-b-0;
+		}
+
+		:where(td code):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+			@apply whitespace-nowrap;
 		}
 
 		:where(img, video, figure):not(
 			:where([class~="not-prose"], [class~="not-prose"] *)
 		) {
 			@apply mx-auto my-6;
+		}
+
+		:where(iframe):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+			@apply h-[260px] w-full rounded-lg border bg-foreground my-2;
+		}
+
+		:where(iframe.tall):not(
+			:where([class~="not-prose"], [class~="not-prose"] *)
+		) {
+			@apply h-[340px];
 		}
 
 		:where(pre):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
@@ -139,6 +155,24 @@
 
 		:where(kbd):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
 			@apply text-foreground bg-muted rounded-md border px-2 py-1 text-xs font-medium;
+		}
+
+		:where(.note):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+			@apply my-5 rounded-lg border border-blue-500/25 border-l-4 border-l-blue-500 bg-blue-500/5 px-4 py-3.5 text-foreground;
+		}
+
+		:where(.warn):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+			@apply my-5 rounded-lg border border-amber-400/30 border-l-4 border-l-warning bg-amber-300/5 px-4 py-3.5 text-amber-400;
+		}
+
+		:where(.demo):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+			@apply my-5 rounded-xl border bg-theme/5 p-4;
+		}
+
+		:where(.demo-label):not(
+			:where([class~="not-prose"], [class~="not-prose"] *)
+		) {
+			@apply mb-2.5 font-mono text-xs uppercase tracking-wide text-muted-foreground;
 		}
 	}
 }

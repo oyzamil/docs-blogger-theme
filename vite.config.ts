@@ -4,16 +4,19 @@ import blogger from "blogger-plugin/vite";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
-export default defineConfig(() => {
+export default defineConfig(({ mode }) => {
 	return {
-		base: `https://cdn.jsdelivr.net/gh/oyzamil/docs-blogger-theme/dist/`,
+		base:
+			mode === "development"
+				? "/"
+				: `https://cdn.jsdelivr.net/gh/oyzamil/docs-blogger-theme/dist/`,
 
 		plugins: [
 			react(),
 			tailwindcss(),
 			tsconfigPaths(),
 			blogger({
-				proxyBlog: "https://muzammil-dev.blogspot.com/",
+				proxyBlog: "https://observekit.blogspot.com/",
 				modules: ["src/index.tsx"],
 				styles: ["src/styles/globals.css"],
 				template: "src/template.xml",
