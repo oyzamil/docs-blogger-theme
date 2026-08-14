@@ -13,7 +13,7 @@ export default function PageLayout({ children }: PageLayoutProps) {
 
 	return (
 		<RootLayout>
-			<Header title={data.header.title} />
+			<Header title={data.header.title} logo={data.meta.favicon.src} />
 			<div className="mx-auto max-w-5xl p-5">
 				<div>{children}</div>
 			</div>

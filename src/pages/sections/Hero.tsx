@@ -1,15 +1,17 @@
 import { siteInfo } from "@/constants";
+import { useBlogger } from "@/contexts/blogger";
 
 export default function Hero() {
+	const { data } = useBlogger();
 	return (
 		<section>
-			<div className="mx-auto max-w-6xl space-y-6 px-4 py-20 sm:px-6 lg:space-y-10 lg:px-8 lg:py-28">
+			<div className="mx-auto max-w-6xl space-y-6 px-4 py-5 sm:px-6 lg:space-y-10 lg:px-8 lg:py-28">
 				<div className="space-y-6 text-center lg:space-y-10">
-					<h1 className="bg-linear-30 from-black via-theme to-theme bg-clip-text font-bold font-heading text-4xl text-transparent capitalize tracking-tight lg:text-8xl">
-						{siteInfo.name}
+					<h1 className="bg-linear-30 from-black via-theme to-theme bg-clip-text font-bold font-heading text-5xl text-transparent capitalize tracking-wide lg:text-8xl">
+						{data.blog.title}
 					</h1>
 
-					<p>{siteInfo.description}</p>
+					<p>{data.blog.description}</p>
 				</div>
 
 				{/* terminal panel signature element */}

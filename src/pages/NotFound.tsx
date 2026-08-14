@@ -23,7 +23,11 @@ export default function NotFound() {
 					</CardDescription>
 				</CardHeader>
 				<CardFooter>
-					<Link className={cn(buttonVariants(), "w-full")} to="/">
+					<Link
+						prefetch="viewport"
+						className={cn(buttonVariants(), "w-full")}
+						to="/"
+					>
 						<HomeIcon /> Home
 					</Link>
 				</CardFooter>

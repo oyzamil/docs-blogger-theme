@@ -2,7 +2,7 @@ import { resizeImage } from "blogr-plugins";
 import { HashIcon } from "lucide-react";
 import { Link } from "react-router";
 
-import type { BlogAuthor, PostMinimal } from "@/lib/blogger";
+import type { PostMinimal } from "@/lib/blogger";
 
 import StructuredData from "@/components/StructuredData";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -43,12 +43,12 @@ export default function HomePage() {
 				{Object.values(data.posts).map((post) => (
 					<PostCard key={post.id} post={post} />
 				))}
-				<h2 className="font-bold text-xl">Blog authors</h2>
+				{/* <h2 className="font-bold text-xl">Blog authors</h2>
 				<div className="flex flex-col gap-5">
 					{data.authors.map((author) => (
 						<BlogAuthorCard key={author.id} author={author} />
 					))}
-				</div>
+				</div> */}
 			</div>
 		</>
 	);
@@ -58,6 +58,7 @@ function PostCard({ post }: { post: PostMinimal }) {
 	return (
 		<div className="flex flex-col rounded-md border p-4">
 			<Link
+				prefetch="viewport"
 				className="mb-1 font-semibold text-lg hover:underline"
 				to={post.url}
 			>
@@ -92,7 +93,10 @@ function PostCard({ post }: { post: PostMinimal }) {
 							variant="secondary"
 							className="flex items-center gap-x-1"
 						>
-							<Link to={`/search/label/${encodeURI(label)}`}>
+							<Link
+								prefetch="viewport"
+								to={`/search/label/${encodeURI(label)}`}
+							>
 								<HashIcon className="size-3" />
 								{label}
 							</Link>
@@ -104,23 +108,23 @@ function PostCard({ post }: { post: PostMinimal }) {
 	);
 }
 
-function BlogAuthorCard({ author }: { author: BlogAuthor }) {
-	return (
-		<div className="flex items-center gap-3 rounded-md border p-4">
-			<Avatar>
-				{author.image && (
-					<AvatarImage
-						className="object-cover object-center"
-						alt={author.name}
-						src={resizeAvatarImage(author.image, 40)}
-					/>
-				)}
-				<AvatarFallback>{author.name.charAt(0)}</AvatarFallback>
-			</Avatar>
-			<div>{author.name}</div>
-		</div>
-	);
-}
+// function BlogAuthorCard({ author }: { author: BlogAuthor }) {
+// 	return (
+// 		<div className="flex items-center gap-3 rounded-md border p-4">
+// 			<Avatar>
+// 				{author.image && (
+// 					<AvatarImage
+// 						className="object-cover object-center"
+// 						alt={author.name}
+// 						src={resizeAvatarImage(author.image, 40)}
+// 					/>
+// 				)}
+// 				<AvatarFallback>{author.name.charAt(0)}</AvatarFallback>
+// 			</Avatar>
+// 			<div>{author.name}</div>
+// 		</div>
+// 	);
+// }
 
 function resizeAvatarImage(source: string, size: number) {
 	return resizeImage(source, {

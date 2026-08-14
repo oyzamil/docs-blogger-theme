@@ -46,7 +46,6 @@ export default function DynamicCodeBlock({
 
 	const node = useMemo(() => {
 		if (result) {
-			// biome-ignore lint/security/noDangerouslySetInnerHtml: Expected
 			return <code dangerouslySetInnerHTML={{ __html: result.html }} />;
 		}
 		return <code>{<Placeholder code={code} />}</code>;

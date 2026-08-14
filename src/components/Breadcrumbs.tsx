@@ -29,7 +29,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
 			<BreadcrumbList>
 				<BreadcrumbItem>
 					<BreadcrumbLink className="flex items-center gap-x-2" asChild>
-						<Link to="/">
+						<Link to="/" prefetch="viewport">
 							<HomeIcon className="size-4 shrink-0" />
 							<span className="sr-only">Home</span>
 						</Link>
@@ -47,7 +47,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
 									)}
 									asChild
 								>
-									<Link to={link}>
+									<Link to={link} prefetch="viewport">
 										{Icon && <Icon className="size-4 shrink-0" />}
 										<span>{label}</span>
 									</Link>

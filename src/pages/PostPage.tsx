@@ -1,14 +1,14 @@
+import { tocify } from "blogr-plugins";
 import { BookOpenTextIcon, LibraryBigIcon } from "lucide-react";
+import { useEffect } from "react";
 
 import type { Post } from "@/lib/blogger";
 
 import ArticleContent from "@/components/ArticleContent";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import Thumbnail from "@/components/Thumbnail";
 
 import { useBlogger } from "@/contexts/blogger";
-import Thumbnail from "@/components/Thumbnail";
-import { useEffect } from "react";
-import { tocify } from "blogr-plugins";
 
 export default function PostPage() {
 	const { data } = useBlogger();
