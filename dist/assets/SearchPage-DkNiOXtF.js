@@ -1,0 +1,2 @@
+import{c as e,s as t}from"./cn-Bs2kaAuX.js";import{t as n}from"./Breadcrumbs-SBwVx-eo.js";import{b as r}from"./template-E4wtGHxr.js";var i=t(`search`,[[`path`,{d:`m21 21-4.34-4.34`,key:`14j7rj`}],[`circle`,{cx:`11`,cy:`11`,r:`8`,key:`4ej97u`}]]),a=e();function o(){let{data:e}=r(),t=e.view.search;return(0,a.jsxs)(`div`,{className:`flex flex-col gap-5`,children:[(0,a.jsx)(n,{items:[{label:`Search`,icon:i}]}),(0,a.jsxs)(`div`,{children:[`Query: `,t.query]})]})}export{o as default};
+//# sourceMappingURL=SearchPage-DkNiOXtF.js.map
