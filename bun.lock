@@ -18,7 +18,7 @@
         "@vitejs/plugin-react": "^5.0.0",
         "blogger-images": "^0.0.3",
         "blogger-plugin": "^0.0.14",
-        "blogr-plugins": "^0.0.1",
+        "blogr-plugins": "0.0.1",
         "class-variance-authority": "^0.7.1",
         "date-fns": "^4.4.0",
         "firebase": "^12.17.1",

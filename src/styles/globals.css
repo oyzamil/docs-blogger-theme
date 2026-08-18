@@ -6,6 +6,7 @@
 @import "./shiki.css";
 
 @import "./shadcn.css";
+@import "./mark.css";
 /* @source "../../.tailwind-classes.json"; */
 
 @custom-variant blog-admin (&:is(.is-blog-admin *));

@@ -43,6 +43,7 @@ export default function HomePage() {
 				{Object.values(data.posts).map((post) => (
 					<PostCard key={post.id} post={post} />
 				))}
+
 				{/* <h2 className="font-bold text-xl">Blog authors</h2>
 				<div className="flex flex-col gap-5">
 					{data.authors.map((author) => (

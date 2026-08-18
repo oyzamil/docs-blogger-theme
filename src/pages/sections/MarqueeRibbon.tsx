@@ -35,7 +35,7 @@ const themeClasses: Record<MarqyRibbonTheme, RibbonThemeClasses> = {
 		badgeText: "text-gray-700 dark:text-black/10",
 		badgePill:
 			"bg-[#f0f0f0]/20 text-[#f0f0f0] dark:bg-black/80 dark:text-[#f0f0f0]",
-		divider: "border-black/10 dark:border-black/10",
+		divider: "border-white/30 dark:border-black/10",
 		messageText: "text-[#f0f0f0] dark:text-black",
 		cta: "bg-black text-[#f0f0f0]/70 dark:bg-[#f0f0f0] dark:text-black/70",
 		ctaHover: "hover:text-[#f0f0f0] dark:hover:text-black",
@@ -82,22 +82,34 @@ const themeClasses: Record<MarqyRibbonTheme, RibbonThemeClasses> = {
 	},
 };
 
-function DefaultMessage({ messageText }: { messageText: string }) {
+function DefaultMessage({
+	messageClass,
+	messages = [
+		"Ship faster, break nothing.",
+		"Accessibility wins.",
+		"Core Web Vitals first.",
+		"DX > hype.",
+		"Components, not chaos.",
+		"Performance is feature.",
+		"Design systems that stick.",
+		"Code review with empathy.",
+		"Automate everything.",
+	],
+}: {
+	messageClass?: string;
+	messages?: string[];
+}) {
 	return (
 		<span
 			className={cn(
 				"flex items-center justify-center gap-8 whitespace-nowrap pr-8 font-light",
-				messageText,
+				messageClass,
 			)}
 		>
-			<span>Clean code. Fast ships. High standards.</span>
-			<span>•</span>
-			<span>Details that make interfaces feel inevitable.</span>
-			<span>•</span>
-			<span>Every team left better than found.</span>
-			<span>•</span>
-			<span>Available for you 24/7</span>
-			<span>•</span>
+			{messages.flatMap((msg, i) => [
+				<span key={`msg-${i}`}>{msg}</span>,
+				i < messages.length - 1 ? <span key={`dot-${i}`}>•</span> : null,
+			])}
 		</span>
 	);
 }
@@ -117,12 +129,12 @@ export default function MarqyRibbon({
 }: MarqyRibbonProps) {
 	const t = themeClasses[theme];
 
-	const content = message ?? <DefaultMessage messageText={t.messageText} />;
+	const content = message ?? <DefaultMessage messageClass={t.messageText} />;
 
 	return (
 		<div
 			className={cn(
-				"relative flex h-11 w-full items-center overflow-hidden border-x",
+				"relative hidden h-11 w-full items-center overflow-hidden border-x md:flex",
 				t.root,
 				className,
 			)}
@@ -151,6 +163,26 @@ export default function MarqyRibbon({
 			<div className="flex-1 overflow-hidden">
 				<Marqy pauseOnHover={pauseOnHover}>{content}</Marqy>
 			</div>
+
+			{/* CTA */}
+			{ctaText && (
+				<div
+					className={cn(
+						"relative z-30 flex shrink-0 items-center self-stretch border-l px-4",
+						t.cta,
+						t.divider,
+					)}
+				>
+					<a
+						href={ctaHref}
+						className={cn(
+							"font-mono font-semibold text-xs uppercase tracking-widest",
+						)}
+					>
+						{ctaText}
+					</a>
+				</div>
+			)}
 		</div>
 	);
 }

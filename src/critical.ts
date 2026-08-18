@@ -1,13 +1,12 @@
 import "./styles/critical.css";
 
-import type { PreferencesState, Theme } from "@/stores/preferences";
-
 import {
 	DEFAULT_THEME,
 	PREFERENCES_KEY,
 	PREFERENCES_VERSION,
 } from "@/constants";
 import { getZPersistedState, setZPersistedState } from "@/stores/helpers";
+import { type PreferencesState, type Theme } from "@/stores/preferences";
 
 const preferencesState = getZPersistedState<Partial<PreferencesState>>(
 	PREFERENCES_KEY,

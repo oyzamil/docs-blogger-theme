@@ -102,7 +102,7 @@
 		}
 
 		:where(table):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
-			@apply my-6 w-full table max-w-full overflow-hidden rounded-lg border border-spacing-0 border-separate text-sm;
+			@apply my-6 w-full block max-w-full overflow-hidden overflow-x-scroll rounded-lg border border-spacing-0 border-separate text-sm;
 		}
 
 		:where(thead):not(:where([class~="not-prose"], [class~="not-prose"] *)) {

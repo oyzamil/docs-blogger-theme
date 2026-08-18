@@ -24,6 +24,7 @@ import {
 	DatabaseIcon,
 	ListIndentDecreaseIcon,
 	ListOrderedIcon,
+	ShareIcon,
 	TerminalIcon,
 	TextAlignJustifyIcon,
 	TextWrapIcon,
@@ -73,6 +74,7 @@ export function CodeBlockRoot({
 	allowWrapToggle = true,
 	allowLineNumbersToggle = true,
 	children,
+	lang,
 	className,
 	...props
 }: CodeBlockRootProps) {
@@ -114,6 +116,7 @@ export function CodeBlockRoot({
 								/>
 							)}
 							{allowCopy && <CopyButton containerRef={areaRef} />}
+							<ShareCodeButton containerRef={areaRef} language={lang} />
 						</div>
 					)}
 				</div>
@@ -210,6 +213,74 @@ function CopyButton({ className, containerRef, ...props }: CopyButtonProps) {
 		>
 			<span className="sr-only">{message}</span>
 			{icon}
+		</ActionButton>
+	);
+}
+
+interface ShareCodeButtonProps {
+	className?: string;
+	containerRef: React.RefObject<HTMLElement | null>;
+	baseUrl?: string;
+	language?: string;
+}
+
+function ShareCodeButton({
+	className,
+	containerRef,
+	baseUrl = "https://muzammil.work/tools/codesnap",
+	language = "javascript",
+	...props
+}: ShareCodeButtonProps) {
+	function getCode(): string {
+		const pre = containerRef.current?.getElementsByTagName("pre").item(0);
+		if (!pre) return "";
+		const clone = pre.cloneNode(true) as HTMLElement;
+		clone.querySelectorAll(".nd-copy-ignore").forEach((node) => {
+			node.replaceWith("\n");
+		});
+		return clone.textContent ?? "";
+	}
+
+	function encodeCode(code: string): string {
+		const bytes = new TextEncoder().encode(code);
+		let binary = "";
+		for (let i = 0; i < bytes.length; i++) {
+			binary += String.fromCharCode(bytes[i]);
+		}
+		return btoa(binary);
+	}
+
+	function buildShareUrl(): string {
+		const code = getCode();
+		const encoded = encodeCode(code);
+
+		// query parameters
+		const query = new URLSearchParams();
+		query.set("language", language);
+		query.set("code", encoded);
+
+		// fragment parameters – site reads these
+		const frag = new URLSearchParams();
+		frag.set("code", encoded);
+		frag.set("language", language);
+
+		return `${baseUrl}?${query.toString()}#${frag.toString()}`;
+	}
+
+	function handleShare() {
+		window.open(buildShareUrl(), "_blank");
+	}
+
+	return (
+		<ActionButton
+			type="button"
+			{...props}
+			className={cn(className)}
+			onClick={handleShare}
+			tooltip={<p>Open in CodeSnap</p>}
+		>
+			<span className="sr-only">Open in CodeSnap</span>
+			<ShareIcon />
 		</ActionButton>
 	);
 }

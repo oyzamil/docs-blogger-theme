@@ -1,8 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 
-import type { HighlightResult } from "@/utils/shiki";
-
 import { cn } from "@/utils/cn";
+import { type HighlightResult } from "@/utils/shiki";
 import { highlight } from "@/utils/shiki/worker";
 
 import {
@@ -56,6 +55,7 @@ export default function DynamicCodeBlock({
 			{...props}
 			icon={icon ?? (lang && <LangIcon lang={lang} />)}
 			className={cn("shiki", className, result?.props.className)}
+			lang={lang}
 			style={{
 				...result?.props.style,
 				...style,

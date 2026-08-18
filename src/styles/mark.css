@@ -1,0 +1,95 @@
+:root {
+	/* Flexoki Color Palette - 400 */
+	--color-red: hsl(13, 100%, 87%);
+	--color-orange: hsl(27, 98%, 84%);
+	--color-yellow: hsl(46, 83%, 80%);
+	--color-green: hsl(66, 45%, 79%);
+	--color-cyan: hsl(158, 47%, 83%);
+	--color-blue: hsl(199, 42%, 84%);
+	--color-purple: hsl(274, 27%, 88%);
+	--color-magenta: hsl(345, 88%, 90%);
+	--mark-default-color: var(--color-yellow);
+}
+
+mark {
+	display: inline-block; /* Safeguarding against the <mark> wrapping, which currently breaks the effect a bit */
+	position: relative;
+	background-color: unset; /* Goodbye default yellow, we'll let the pseudo elements take it from here */
+	isolation: isolate;
+	margin-right: var(--margin, 10px);
+	padding-inline: 5px;
+
+	&::before {
+		position: absolute;
+		inset: 0;
+		content: "";
+
+		/* Not glamorous. with some time I could probably make this nicer. */
+		/* This was mostly just manual tweaks until it looked nice (to me) */
+		width: calc(100% + 1ch);
+		left: -0.25ch;
+		height: 110%;
+		top: -5%;
+
+		/* I left these in, so you can easily play with where where the elliptical border is */
+		/* border-top-left-radius: 2px; */
+		/* border-top-right-radius: 0; */
+		border-bottom-right-radius: 20px 30px;
+		/* border-bottom-left-radius: -20px 10px; */
+
+		background-color: var(--mark-default-color);
+		background-image: var(--texture-noise);
+		opacity: 0.75;
+
+		box-shadow:
+			inset -2px 0px 1px hsl(from var(--mark-default-color) h s calc(l - 20)),
+			inset -4px 0px 5px hsl(from var(--mark-default-color) h s calc(l - 20));
+
+		/* I left these in too, if you wanted it experiment with some internal or external borders - could be fun! */
+		/* border: solid 2px hsl(from var(--mark-default-color) h s calc(l + 5)); */
+		/* outline: solid 1px hsl(from var(--mark-default-color) h s calc(l - 20)); */
+		/* outline-offset: -1px; */
+
+		filter: url(#filter-rough);
+		z-index: -1;
+	}
+
+	&::after {
+		position: absolute;
+		content: "";
+
+		/* Again, Not glamorous CSS time. */
+		/* I was just testing out various units and sizes until it looked good (to me) */
+		height: 1ch;
+		width: 0.5ch;
+		top: 2px;
+		right: -0.25em;
+
+		background: radial-gradient(
+			hsl(from var(--mark-default-color) h s calc(l - 30)),
+			hsl(from var(--mark-default-color) h s l)
+		);
+
+		opacity: 0.4;
+		border-radius: 10px 0 50px/200px 0; /* I just messed with this until it looked skewed enough */
+		rotate: 15deg; /* This could be fun to randomise via build step or JS on client side, translation too! */
+		filter: url(#filter-rough);
+		z-index: -1;
+	}
+}
+/* <!-- Experiment Start -->
+<svg width="0" height="0" aria-hidden="true" style="position: absolute;">
+  <defs>
+    <filter id="filter-rough">
+      <feTurbulence type="fractalNoise" baseFrequency=".08" numOctaves="4"/>
+      <feDisplacementMap in="SourceGraphic" scale="5" />
+    </filter>
+  </defs>
+</svg> */
+
+/* <div class="badges" style="--margin: 20px; --mark-default-color: color-mix(in oklch, var(--theme) 50%, transparent)">
+  <mark class="badge">npm i observekit</mark>
+  <mark class="badge">zero dependencies</mark>
+  <mark class="badge">ESM + CJS</mark>
+  <mark class="badge">fully typed</mark>
+</div> */
