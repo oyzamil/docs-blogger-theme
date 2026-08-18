@@ -2,7 +2,7 @@ import { tocify } from "blogr-plugins";
 import { BookOpenTextIcon, LibraryBigIcon } from "lucide-react";
 import { useEffect } from "react";
 
-import type { Post } from "@/lib/blogger";
+import { type Post } from "@/lib/blogger";
 
 import ArticleContent from "@/components/ArticleContent";
 import Breadcrumbs from "@/components/Breadcrumbs";

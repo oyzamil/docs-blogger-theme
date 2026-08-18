@@ -1,7 +1,6 @@
-import { Marqy } from "marqy";
-import "marqy/dist/marqy.css";
-
+import { marqify } from "blogr-plugins";
 import type React from "react";
+import { useEffect } from "react";
 
 import { cn } from "@/utils/cn";
 
@@ -131,6 +130,15 @@ export default function MarqyRibbon({
 
 	const content = message ?? <DefaultMessage messageClass={t.messageText} />;
 
+	useEffect(() => {
+		const marqy = marqify(".marqify", {
+			speed: "fast",
+		});
+		return () => {
+			marqy.destroy();
+		};
+	}, []);
+
 	return (
 		<div
 			className={cn(
@@ -160,29 +168,25 @@ export default function MarqyRibbon({
 				</div>
 			)}
 
-			<div className="flex-1 overflow-hidden">
-				<Marqy pauseOnHover={pauseOnHover}>{content}</Marqy>
-			</div>
+			<div className="marqify overflow-hidden">{content}</div>
 
 			{/* CTA */}
-			{ctaText && (
-				<div
+			<div
+				className={cn(
+					"relative z-30 flex shrink-0 items-center self-stretch border-l px-4",
+					t.cta,
+					t.divider,
+				)}
+			>
+				<a
+					href={ctaHref}
 					className={cn(
-						"relative z-30 flex shrink-0 items-center self-stretch border-l px-4",
-						t.cta,
-						t.divider,
+						"font-mono font-semibold text-xs uppercase tracking-widest",
 					)}
 				>
-					<a
-						href={ctaHref}
-						className={cn(
-							"font-mono font-semibold text-xs uppercase tracking-widest",
-						)}
-					>
-						{ctaText}
-					</a>
-				</div>
-			)}
+					{ctaText}
+				</a>
+			</div>
 		</div>
 	);
 }
